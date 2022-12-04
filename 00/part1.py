@@ -12,4 +12,5 @@ def main(filename):
         print(f"{ix} {line}")
        
 if __name__ == "__main__":
-    main("day00_00.input")
+    main("test.input")
+    # main("question.input")

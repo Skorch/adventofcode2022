@@ -22,19 +22,7 @@ def main(filename):
     total = 0
     for ix, group1_min, group1_max, group2_min, group2_max in read_file(filename):
         print(f"{ix} {group1_min} - {group1_max} {group2_min} - {group2_max}")
-        # if group2_min >= group1_min:
-        #     print("group 2 overlap 1 min")
-        #     total += 1
-        # elif group2_max <= group1_max:
-        #     print("group 2 overlap 1 max")
-        #     total += 1
-        # elif group1_min >= group2_min:
-        #     print("group 1 overlap 1 min")
-        #     total += 1
-        # elif group1_max <= group2_max:
-        #     print("group 1 overlap 2 max")
-        #     total += 1
-        
+
         if group1_min <= group2_min <= group1_max:
             print("group 2 min in 1a")
             total += 1

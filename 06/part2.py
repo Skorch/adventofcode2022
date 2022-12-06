@@ -14,27 +14,18 @@ def read_file(filename):
             if line:
                 yield (ix, line)
 
-def start_of_packet(input):
+def buffer_marker_position(input, buffer_size):
     buffer = []
     for ix, letter in enumerate(input):
         buffer.append(letter)
-        if len(buffer) > 4:
+        if len(buffer) > buffer_size:
             _ = buffer.pop(0)
-            if len(set(buffer)) == 4:
-                return ix + 1
-            
-def start_of_message(input):
-    buffer = []
-    for ix, letter in enumerate(input):
-        buffer.append(letter)
-        if len(buffer) > 14:
-            _ = buffer.pop(0)
-            if len(set(buffer)) == 14:
+            if len(set(buffer)) == buffer_size:
                 return ix + 1
             
 def main(filename):
     for ix, line in read_file(filename):
-        packet_index = start_of_message(line)
+        packet_index = buffer_marker_position(line, 14)
         print(f"{ix} {line} {packet_index}")
        
 if __name__ == "__main__":

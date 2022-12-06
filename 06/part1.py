@@ -14,19 +14,19 @@ def read_file(filename):
             if line:
                 yield (ix, line)
 
-def test_input(input):
+def buffer_marker_position(input, buffer_size):
     buffer = []
     for ix, letter in enumerate(input):
         buffer.append(letter)
-        if len(buffer) > 4:
+        if len(buffer) > buffer_size:
             _ = buffer.pop(0)
-            if len(set(buffer)) == 4:
+            if len(set(buffer)) == buffer_size:
                 return ix + 1
-            
+             
 
 def main(filename):
     for ix, line in read_file(filename):
-        result = test_input(line)
+        result = buffer_marker_position(line, 4)
         print(f"{ix} {line} {result}")
        
 if __name__ == "__main__":

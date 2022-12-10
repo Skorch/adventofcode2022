@@ -1,3 +1,10 @@
+import logging
+
+DRAW = False
+DEBUG = False
+
+input_file = "test.input" if DEBUG else "question.input"
+logging.basicConfig(level=logging.DEBUG if DEBUG else logging.INFO)
 
 def read_file(filename):
     
@@ -12,5 +19,5 @@ def main(filename):
         print(f"{ix} {line}")
        
 if __name__ == "__main__":
-    main("test.input")
+    main(input_file)
     # main("question.input")
